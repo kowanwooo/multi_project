@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="missingBoard">
-	<select id="list" resultType="missingBoardVo">
-		select * from missingboard
+	<select id="list" resultType="missingBoardVO" parameterType="pageVO">
+		select * from(
+			select
+				row_number() over(order by missingId desc) as missing_no,
+				m.*
+			from missingboard m ) m2
+		where m2.missing_no between #{start} and #{end}
+	</select>
+	
+	<select id="count" resultType="Integer">
+		select count(*) from missingboard
 	</select>
 </mapper>
 

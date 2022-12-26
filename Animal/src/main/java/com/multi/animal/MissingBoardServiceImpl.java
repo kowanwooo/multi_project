@@ -11,7 +11,12 @@ public class MissingBoardServiceImpl implements MissingBoardServiceInterface {
 	MissingBoardDAOImpl dao;
 
 	@Override
-	public List<MissingBoardVO> list() {
-		return dao.list();
+	public List<MissingBoardVO> list(PageVO vo) {
+		return dao.list(vo);
+	}
+
+	@Override
+	public int count() {
+		return dao.count();
 	}
 }

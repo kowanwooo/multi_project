@@ -7,6 +7,7 @@
      별명을 지어서 사용 -->
   <typeAliases>
       <typeAlias type="com.multi.animal.MissingBoardVO" alias="missingBoardVO"></typeAlias>
+      <typeAlias type="com.multi.animal.PageVO" alias="pageVO"></typeAlias>
    </typeAliases>
    <mappers>
    <!-- SQL문 정의하는 파일들의 목록을 지정. -->

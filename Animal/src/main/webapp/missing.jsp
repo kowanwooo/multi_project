@@ -11,9 +11,10 @@
 <script type="text/javascript">
 	$(function() {
 		$.ajax({
-			url: "fetchBoard.missing",
+			url: "fetchBoard",
 			success: function(table){
 				$("#result").html(table)
+				alert('gg')
 			}
 		})
 	});

@@ -16,3 +16,14 @@
 		</ul>
 	</div>
 </c:forEach>
+<hr color="red">
+<%
+	int pages = (int)request.getAttribute("pages");
+	for(int p = 1; p <= pages; p++){
+%>
+	<a href=fetchBoard?page=<%= p %>>
+		<button style="background: lime; color: red; width: 50px;"><%= p %></button>
+	</a>  
+<%		
+	}
+%>
