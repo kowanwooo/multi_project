@@ -24,4 +24,12 @@ public class MissingBoardDAOImpl implements MissingBoardDAOInterface {
 		return my.selectOne("missingBoard.count");
 	}
 
+	public MissingBoardVO one(MissingBoardVO vo) {
+		return my.selectOne("missingBoard.one", vo);
+	}
+
+	public void insert(MissingBoardVO vo) {
+		my.insert("missingBoard.insert", vo);
+	}
+
 }

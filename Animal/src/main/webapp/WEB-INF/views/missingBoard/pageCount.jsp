@@ -7,9 +7,9 @@
 		$(".page_btn").click(function() {
 			$.ajax({
 				url : "fetchBoard",
-				data: {
-					page: $(this).attr("id"),
-					
+				data : {
+					page : $(this).attr("id"),
+
 				},
 				success : function(table) {
 					$("#result").html(table)
@@ -21,12 +21,13 @@
 		});
 	});
 </script>
-<%
-	int pages = (int) request.getAttribute("pages");
-for (int p = 1; p <= pages; p++) {
-%>
-<button id=<%=p%> class="page_btn"
-	style="cursor: pointer; background: lime; color: red; width: 50px;"><%=p%></button>
-<%
-	}
-%>
+<div class="page_btnWrap">
+	<%
+		int pages = (int) request.getAttribute("pages");
+	for (int p = 1; p <= pages; p++) {
+	%>
+	<button id=<%=p%> class="page_btn"><%=p%></button>
+	<%
+		}
+	%>
+</div>

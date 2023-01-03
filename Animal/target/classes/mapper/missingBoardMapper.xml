@@ -13,6 +13,15 @@
 	<select id="count" resultType="Integer">
 		select count(*) from missingboard
 	</select>
+	
+	<select id="one" parameterType="missingBoardVO" resultType="missingBoardVO">
+		select * from missingboard where missingId = #{missingId}
+	</select>
+	
+	<insert id="insert" parameterType="missingBoardVO">
+		insert into missingboard values 
+			(null, #{userId}, #{title}, #{location}, #{tel}, #{pet}, null, #{description}, #{gratuity}, #{img}, #{rule}, #{missingDate})
+	</insert>
 </mapper>
 
 

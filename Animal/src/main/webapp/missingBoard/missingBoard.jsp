@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>실종 페이지</title>
 
-<link rel="stylesheet" href="../resources/css/missing.css">
+<link rel="stylesheet" href="../resources/css/missingBoard.css">
 <link rel="stylesheet" href="../resources/css/header.css">
 <link rel="stylesheet" href="../resources/css/style.css">
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
@@ -51,7 +51,7 @@
 				<option value="jeju">제주도</option>
 			</select>
 			<button class="searh_btn">검색</button>
-			<button class="create_btn">등록하기</button>
+			<button class="create_btn" onclick = "location.href='missingBoardInsert.jsp'">등록하기</button>
 		</div>
 		<div id="result"></div>
 		<div id="result2"></div>

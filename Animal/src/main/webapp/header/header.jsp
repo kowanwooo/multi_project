@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="header_container">
-	<h1 class="header_logo">로고</h1>
+	<img class="header_logo" src="../resources/img/순양.png">
 	<ul class="header_menu">
 		<li>입양</li>
 		<li>시터</li>

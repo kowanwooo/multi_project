@@ -8,4 +8,8 @@ public interface MissingBoardServiceInterface {
 	List<MissingBoardVO> list(PageVO vo);
 
 	int count();
+	
+	MissingBoardVO one(MissingBoardVO vo);
+	
+	void insert(MissingBoardVO vo);
 }

@@ -10,4 +10,8 @@ public interface MissingBoardDAOInterface {
 	public List<MissingBoardVO> list(PageVO vo);
 
 	public int count();
+	
+	public MissingBoardVO one(MissingBoardVO vo);
+	
+	public void insert(MissingBoardVO vo);
 }

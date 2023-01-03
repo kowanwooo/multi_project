@@ -21,4 +21,13 @@ public class MissingBoardServiceImpl implements MissingBoardServiceInterface {
 	public int count() {
 		return dao.count();
 	}
+
+	public MissingBoardVO one(MissingBoardVO vo) {
+		return dao.one(vo);
+	}
+
+	public void insert(MissingBoardVO vo) {
+		dao.insert(vo);
+	}
+
 }
