@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.multi.animal.FilterVO;
 import com.multi.animal.PageVO;
 
 @Controller
@@ -57,5 +59,19 @@ public class MissingBoardController {
 		missingBoardService.insert(vo);
 		System.out.println("BoardInsert");
 		return "redirect:missingBoard.jsp";
+	}
+	
+	@RequestMapping("missingBoard/searchFilter")
+	public void searchFilter(FilterVO vo, Model model) {
+		if (vo.getPage() == 0) {
+			vo.setPage(1);
+		}
+		System.out.println(vo.getPage());
+		vo.setStartEnd(vo.getPage());
+		List<MissingBoardVO> filterList = missingBoardService.filterList(vo);
+
+		model.addAttribute("list", filterList);
+
+		System.out.println("list2");
 	}
 }

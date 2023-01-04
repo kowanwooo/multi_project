@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.multi.animal.FilterVO;
 import com.multi.animal.PageVO;
 
 @Service
@@ -28,6 +29,10 @@ public class MissingBoardServiceImpl implements MissingBoardServiceInterface {
 
 	public void insert(MissingBoardVO vo) {
 		dao.insert(vo);
+	}
+
+	public List<MissingBoardVO> filterList(FilterVO vo) {
+		return dao.filterList(vo);
 	}
 
 }

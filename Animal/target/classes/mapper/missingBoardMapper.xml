@@ -22,6 +22,16 @@
 		insert into missingboard values 
 			(null, #{userId}, #{title}, #{location}, #{tel}, #{pet}, null, #{description}, #{gratuity}, #{img}, #{rule}, #{missingDate})
 	</insert>
+	
+	<select id="filterList" resultType="missingBoardVO" parameterType="pageVO">
+		select * from(
+			select
+				row_number() over(order by missingId desc) as missing_no,
+				m.*
+			from missingboard m ) m2
+		where (m2.missing_no between #{start} and #{end}) and location = #{location} and pet = #{pet}
+		
+	</select>
 </mapper>
 
 

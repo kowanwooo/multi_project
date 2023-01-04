@@ -27,6 +27,20 @@
 				$("#result2").html(table)
 			}
 		})
+
+		$(".searh_btn").on("click",	function() {
+			alert($("select[name=choice_pet] option:selected").text())
+				$.ajax({
+							url : "searchFilter",
+							data : {
+								pet : $("select[name=choice_pet] option:selected").text(),
+								location : $("select[name=choice_location] option:selected").text(),
+									},
+							success : function(table) {
+								$("#result").html(table)
+							}
+						})
+				})
 	});
 </script>
 </head>
@@ -51,7 +65,8 @@
 				<option value="jeju">제주도</option>
 			</select>
 			<button class="searh_btn">검색</button>
-			<button class="create_btn" onclick = "location.href='missingBoardInsert.jsp'">등록하기</button>
+			<button class="create_btn"
+				onclick="location.href='missingBoardInsert.jsp'">등록하기</button>
 		</div>
 		<div id="result"></div>
 		<div id="result2"></div>

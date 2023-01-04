@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.multi.animal.FilterVO;
 import com.multi.animal.PageVO;
 
 @Repository
@@ -30,6 +31,10 @@ public class MissingBoardDAOImpl implements MissingBoardDAOInterface {
 
 	public void insert(MissingBoardVO vo) {
 		my.insert("missingBoard.insert", vo);
+	}
+
+	public List<MissingBoardVO> filterList(FilterVO vo) {
+		return my.selectList("missingBoard.filterList", vo);
 	}
 
 }
