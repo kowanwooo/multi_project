@@ -14,3 +14,6 @@
 		</ul>
 	</div>
 </c:forEach>
+<c:if test="${empty list}">
+		<div class="empty_list">검색결과가 없습니다.</div>
+</c:if>

@@ -102,6 +102,12 @@
 	margin-top: 14px;
 }
 
+.empty_list {
+	text-align: center;
+	font-size: 40px;
+	margin-top: 175px;
+}
+
 .missing_infoList:first-child {
 	font-weight: bolder;
 }

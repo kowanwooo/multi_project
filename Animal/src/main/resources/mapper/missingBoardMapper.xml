@@ -23,14 +23,17 @@
 			(null, #{userId}, #{title}, #{location}, #{tel}, #{pet}, null, #{description}, #{gratuity}, #{img}, #{rule}, #{missingDate})
 	</insert>
 	
-	<select id="filterList" resultType="missingBoardVO" parameterType="pageVO">
+	<select id="filterList" resultType="missingBoardVO" parameterType="filterVO">
 		select * from(
 			select
-				row_number() over(order by missingId desc) as missing_no,
+				row_number() over(partition by location, pet order by missingId desc) as missing_no,
 				m.*
 			from missingboard m ) m2
 		where (m2.missing_no between #{start} and #{end}) and location = #{location} and pet = #{pet}
-		
+	</select>
+	
+	<select id="filterCount" resultType="Integer" parameterType="filterVO">
+		select count(*) from missingboard where location = #{location} and pet = #{pet}
 	</select>
 </mapper>
 

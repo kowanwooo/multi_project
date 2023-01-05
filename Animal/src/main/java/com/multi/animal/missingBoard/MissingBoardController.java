@@ -34,7 +34,7 @@ public class MissingBoardController {
 	public void pageCount(PageVO vo, Model model) {
 		int count = missingBoardService.count();
 		System.out.println("all count>> " + count);
-
+		System.out.println(vo);
 		int pages = 0;
 		if (count % 4 == 0) {
 			pages = count / 4;
@@ -46,6 +46,23 @@ public class MissingBoardController {
 		System.out.println("pageCount");
 	}
 
+	@RequestMapping("missingBoard/filterPageCount")
+	public void filterPageCount(FilterVO vo, Model model) {
+		int filterCount = missingBoardService.filterCount(vo);
+		System.out.println(vo);
+		System.out.println(filterCount);
+		int pages = 0;
+		if (filterCount % 4 == 0) {
+			pages = filterCount / 4;
+		} else {
+			pages = filterCount / 4 + 1;
+		}
+		System.out.println("all filterCount>> " + filterCount);
+		model.addAttribute("count", filterCount);
+		model.addAttribute("pages", pages);
+		System.out.println("pageCount");
+	}
+	
 	@RequestMapping("missingBoard/boardDetail")
 	public void one(MissingBoardVO vo, Model model) {
 		MissingBoardVO one = missingBoardService.one(vo);
@@ -66,12 +83,13 @@ public class MissingBoardController {
 		if (vo.getPage() == 0) {
 			vo.setPage(1);
 		}
+		System.out.println(vo);
 		System.out.println(vo.getPage());
 		vo.setStartEnd(vo.getPage());
 		List<MissingBoardVO> filterList = missingBoardService.filterList(vo);
 
 		model.addAttribute("list", filterList);
-
-		System.out.println("list2");
+		
+		System.out.println("filterList");
 	}
 }

@@ -52,4 +52,10 @@ public class FilterVO {
 		this.end = end;
 	}
 
+	@Override
+	public String toString() {
+		return "FilterVO [pet=" + pet + ", location=" + location + ", start=" + start + ", end=" + end + ", page="
+				+ page + "]";
+	}
+	
 }

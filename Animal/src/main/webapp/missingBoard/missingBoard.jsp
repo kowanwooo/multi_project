@@ -40,6 +40,17 @@
 								$("#result").html(table)
 							}
 						})
+				$.ajax({
+							url : "filterPageCount",
+							data : {
+								pet : $("select[name=choice_pet] option:selected").text(),
+								location : $("select[name=choice_location] option:selected").text(),
+									},
+							success : function(table) {
+							console.log("gg");
+							$("#result2").html(table)
+						}
+					})
 				})
 	});
 </script>

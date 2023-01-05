@@ -35,4 +35,8 @@ public class MissingBoardServiceImpl implements MissingBoardServiceInterface {
 		return dao.filterList(vo);
 	}
 
+	public int filterCount(FilterVO vo) {
+		return dao.filterCount(vo);
+	}
+
 }

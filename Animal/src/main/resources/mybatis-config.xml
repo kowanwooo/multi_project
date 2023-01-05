@@ -8,6 +8,7 @@
   <typeAliases>
       <typeAlias type="com.multi.animal.missingBoard.MissingBoardVO" alias="missingBoardVO"></typeAlias>
       <typeAlias type="com.multi.animal.PageVO" alias="pageVO"></typeAlias>
+      <typeAlias type="com.multi.animal.FilterVO" alias="filterVO"></typeAlias>
    </typeAliases>
    <mappers>
    <!-- SQL문 정의하는 파일들의 목록을 지정. -->
