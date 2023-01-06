@@ -18,7 +18,7 @@
 		</div>
 		<div class="detail_imgWrap">
 			<div class="detail_mainImg">
-				<img class="detail_img" alt="pet" src="../resources/img/${one.img}">
+				<img class="detail_img" alt="pet" src="../resources/upload/${one.img}">
 			</div>
 		</div>
 		<div class="detail_infoWrap">

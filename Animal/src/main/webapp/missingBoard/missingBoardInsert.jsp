@@ -8,6 +8,17 @@
 <link rel="stylesheet" href="../resources/css/header.css">
 <link rel="stylesheet" href="../resources/css/missingBoardInsert.css">
 <link rel="stylesheet" href="../resources/css/style.css">
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+	var cnt = 1;
+	function fn_addFile() {
+		if (cnt < 3) {
+			$(".multi_file").append(
+					"<br>" + "<input type='file' name='file" + cnt + "' onClick='fn_addFile()' />");
+			cnt++;
+		}
+	}
+</script>
 </head>
 <body>
 	<jsp:include page="../header/header.jsp"></jsp:include>
@@ -16,7 +27,7 @@
 			<h1 class="insert_title">실종 동물 등록</h1>
 			<div class="insert_info">
 				<div style="height: 35px;"></div>
-				<form action="create">
+				<form action="create" method="post" enctype="multipart/form-data">
 					<ul>
 						<li>*등록인 : <input type="text" name="userId"
 							placeholder="내용을 입력하세요." required></li>
@@ -38,7 +49,8 @@
 							required>강아지 <input type="radio" name="pet" value="고양이">고양이
 							<input type="radio" name="pet" value="기타 반려동물">기타 반려동물
 						</li>
-						<li>*잃어버린 날짜 : <input type="date" name="missingDate" placeholder="내용을 입력하세요." required></li>
+						<li>*잃어버린 날짜 : <input type="date" name="missingDate"
+							placeholder="내용을 입력하세요." required></li>
 						<li>*상세설명 :</li>
 						<li><textarea id="story" name="description" rows="6"
 								cols="80" required></textarea></li>
@@ -46,7 +58,7 @@
 							type="text" name="gratuity" placeholder="내용을 입력하세요."> <input
 							type="radio" name="gratuity1" value="0">없음
 						</li>
-						<li>*사진첨부 : <input type="file" name="img"></li>
+						<li class="multi_file">*사진첨부 : <input type="file" name="file" id="file" onClick='fn_addFile()'></li>
 					</ul>
 					<button type="submit" class="insert_btn1">등록</button>
 				</form>

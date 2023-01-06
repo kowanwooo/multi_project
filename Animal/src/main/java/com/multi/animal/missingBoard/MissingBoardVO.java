@@ -1,5 +1,7 @@
 package com.multi.animal.missingBoard;
 
+import java.util.Map;
+
 public class MissingBoardVO {
 	private int missingId;
 	private String userId;

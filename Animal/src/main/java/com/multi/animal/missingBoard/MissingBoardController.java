@@ -1,11 +1,13 @@
 package com.multi.animal.missingBoard;
 
+import java.io.File;
 import java.util.List;
-
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.animal.FilterVO;
 import com.multi.animal.PageVO;
@@ -62,7 +64,7 @@ public class MissingBoardController {
 		model.addAttribute("pages", pages);
 		System.out.println("pageCount");
 	}
-	
+
 	@RequestMapping("missingBoard/boardDetail")
 	public void one(MissingBoardVO vo, Model model) {
 		MissingBoardVO one = missingBoardService.one(vo);
@@ -70,14 +72,25 @@ public class MissingBoardController {
 		System.out.println("BoardDetail");
 		System.out.println(one);
 	}
-	
+
 	@RequestMapping("missingBoard/create")
-	public String insert(MissingBoardVO vo) {
+	public String insert(MissingBoardVO vo, HttpServletRequest request,MultipartFile file) throws Exception {
+		String savedName = file.getOriginalFilename();
+		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
+		System.out.println("업로드 경로는 " + uploadPath);
+
+		System.out.println(uploadPath + "/" + savedName);
+		File target = new File(uploadPath + "/" + savedName);
+		if (!target.isDirectory()) {
+			target.mkdir();
+		}
+		file.transferTo(target);
+		vo.setImg(savedName);
 		missingBoardService.insert(vo);
 		System.out.println("BoardInsert");
 		return "redirect:missingBoard.jsp";
 	}
-	
+
 	@RequestMapping("missingBoard/searchFilter")
 	public void searchFilter(FilterVO vo, Model model) {
 		if (vo.getPage() == 0) {
@@ -89,7 +102,7 @@ public class MissingBoardController {
 		List<MissingBoardVO> filterList = missingBoardService.filterList(vo);
 
 		model.addAttribute("list", filterList);
-		
+
 		System.out.println("filterList");
 	}
 }
