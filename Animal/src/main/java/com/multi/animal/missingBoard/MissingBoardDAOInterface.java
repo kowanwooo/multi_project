@@ -19,4 +19,8 @@ public interface MissingBoardDAOInterface {
 	public List<MissingBoardVO> filterList(FilterVO vo);
 	
 	public int filterCount(FilterVO vo);
+	
+	public void delete(MissingBoardVO vo);
+	
+	public void modify(MissingBoardVO vo);
 }

@@ -1,40 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="missingBoard">
-	<select id="list" resultType="missingBoardVO" parameterType="pageVO">
+	<select id="list" resultType="missingBoardVO"
+		parameterType="pageVO">
 		select * from(
-			select
-				row_number() over(order by missingId desc) as missing_no,
-				m.*
-			from missingboard m ) m2
-		where m2.missing_no between #{start} and #{end}
+		select
+		row_number() over(order by missingId
+		desc) as missing_no,
+		m.*
+		from missingboard m ) m2
+		where m2.missing_no
+		between #{start} and #{end}
 	</select>
-	
+
 	<select id="count" resultType="Integer">
 		select count(*) from missingboard
 	</select>
-	
-	<select id="one" parameterType="missingBoardVO" resultType="missingBoardVO">
+
+	<select id="one" parameterType="missingBoardVO"
+		resultType="missingBoardVO">
 		select * from missingboard where missingId = #{missingId}
 	</select>
-	
+
 	<insert id="insert" parameterType="missingBoardVO">
-		insert into missingboard values 
-			(null, #{userId}, #{title}, #{location}, #{tel}, #{pet}, null, #{description}, #{gratuity}, #{img}, #{rule}, #{missingDate})
+		insert into missingboard
+		values
+		(null, #{userId}, #{title}, #{location}, #{tel}, #{pet}, null,
+		#{description}, #{gratuity}, #{img}, #{rule}, #{missingDate})
 	</insert>
-	
-	<select id="filterList" resultType="missingBoardVO" parameterType="filterVO">
+
+	<select id="filterList" resultType="missingBoardVO"
+		parameterType="filterVO">
 		select * from(
-			select
-				row_number() over(partition by location, pet order by missingId desc) as missing_no,
-				m.*
-			from missingboard m ) m2
-		where (m2.missing_no between #{start} and #{end}) and location = #{location} and pet = #{pet}
+		select
+		row_number() over(partition by
+		location, pet order by missingId desc) as
+		missing_no,
+		m.*
+		from
+		missingboard m ) m2
+		where (m2.missing_no between #{start} and #{end})
+		and location = #{location} and pet = #{pet}
 	</select>
-	
-	<select id="filterCount" resultType="Integer" parameterType="filterVO">
-		select count(*) from missingboard where location = #{location} and pet = #{pet}
+
+	<select id="filterCount" resultType="Integer"
+		parameterType="filterVO">
+		select count(*) from missingboard where location =
+		#{location} and pet = #{pet}
 	</select>
+
+	<delete id="delete" parameterType="missingBoardVO">
+		delete from missingboard where
+		missingId = #{missingId}
+	</delete>
+
+	<update id="modify" parameterType="missingBoardVO">
+		update missingboard set title
+		= #{title}, location = #{location}, tel = #{tel}, pet =
+		#{pet},
+		description = #{description}, gratuity = #{gratuity}, img =
+		#{img},missingDate = #{missingDate}
+		where
+		missingId = #{missingId}
+	</update>
 </mapper>
 
 

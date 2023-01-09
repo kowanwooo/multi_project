@@ -18,14 +18,15 @@
 		</div>
 		<div class="detail_imgWrap">
 			<div class="detail_mainImg">
-				<img class="detail_img" alt="pet" src="../resources/upload/${one.img}">
+				<img class="detail_img" alt="pet"
+					src="../resources/upload/${one.img}">
 			</div>
 		</div>
 		<div class="detail_infoWrap">
 			<div class="detail_info">
 				<div class="detail_btn">
-					<button>수정하기</button>
-					<button>삭제하기</button>
+					<button class="modify_btn" onclick="location.href='findOne?missingId=${one.missingId}'">수정하기</button>
+					<button class="delete_btn"  onclick="location.href='delete?missingId=${one.missingId}'">삭제하기</button>
 				</div>
 				<div class="detail_list">
 					<ul>

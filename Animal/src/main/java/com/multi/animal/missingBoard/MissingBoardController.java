@@ -105,4 +105,38 @@ public class MissingBoardController {
 
 		System.out.println("filterList");
 	}
+	
+	@RequestMapping("missingBoard/delete")
+	public String delete(MissingBoardVO vo)  {
+		missingBoardService.delete(vo);
+		return "redirect:missingBoard.jsp";
+	}
+	
+	@RequestMapping("missingBoard/findOne")
+	public void findOne(MissingBoardVO vo, Model model)  {
+		MissingBoardVO one = missingBoardService.one(vo);
+		model.addAttribute("one", one);
+		System.out.println("findOne");
+		System.out.println(one);
+	}
+	
+	@RequestMapping("missingBoard/modify")
+	public String modify(MissingBoardVO vo, HttpServletRequest request,MultipartFile file) throws Exception {
+		String savedName = file.getOriginalFilename();
+		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
+		System.out.println("업로드 경로는 " + uploadPath);
+
+		System.out.println(uploadPath + "/" + savedName);
+		File target = new File(uploadPath + "/" + savedName);
+		if (!target.isDirectory()) {
+			target.mkdir();
+		}
+		file.transferTo(target);
+		vo.setImg(savedName);
+		missingBoardService.modify(vo);
+		System.out.println("modify");
+		System.out.println(vo.getMissingId());
+		System.out.println("==================");
+		return "redirect:missingBoard.jsp";
+	}
 }

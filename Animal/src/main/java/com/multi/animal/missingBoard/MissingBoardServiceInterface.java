@@ -17,4 +17,8 @@ public interface MissingBoardServiceInterface {
 	List<MissingBoardVO> filterList(FilterVO vo);
 	
 	int filterCount(FilterVO vo);
+	
+	void delete(MissingBoardVO vo);
+	
+	void modify(MissingBoardVO vo);
 }

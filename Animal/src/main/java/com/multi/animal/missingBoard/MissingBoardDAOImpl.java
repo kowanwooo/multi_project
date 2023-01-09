@@ -45,4 +45,12 @@ public class MissingBoardDAOImpl implements MissingBoardDAOInterface {
 		return my.selectOne("missingBoard.filterCount", vo);
 	}
 
+	public void delete(MissingBoardVO vo) {
+		my.delete("missingBoard.delete", vo);
+	}
+
+	public void modify(MissingBoardVO vo) {
+		my.update("missingBoard.modify", vo);
+	}
+
 }

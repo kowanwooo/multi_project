@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="header_container">
-	<img class="header_logo" src="../resources/img/순양.png">
+	<img class="header_logo" style="cursor: pointer;" onclick="location.href = 'missingBoard.jsp'"
+		src="../resources/img/순양.png">
 	<ul class="header_menu">
 		<li>입양</li>
 		<li>시터</li>
