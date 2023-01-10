@@ -14,11 +14,8 @@
 				},
 				success : function(table) {
 					$("#result").html(table)
-					/*alert('gg')  */
 				}
 			})
-			alert($(this).attr("id"))
-			console.log($(this).attr("id"))
 		});
 	});
 </script>

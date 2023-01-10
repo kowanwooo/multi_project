@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.multi.animal.FilterVO;
 import com.multi.animal.PageVO;
 
@@ -75,6 +74,7 @@ public class MissingBoardController {
 
 	@RequestMapping("missingBoard/create")
 	public String insert(MissingBoardVO vo, HttpServletRequest request,MultipartFile file) throws Exception {
+		System.out.println(vo);
 		String savedName = file.getOriginalFilename();
 		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
 		System.out.println("업로드 경로는 " + uploadPath);
@@ -139,4 +139,13 @@ public class MissingBoardController {
 		System.out.println("==================");
 		return "redirect:missingBoard.jsp";
 	}
+	
+	@RequestMapping("missingBoard/missingEnd")
+	public String missingEnd(MissingBoardVO vo, Model model)  {
+		missingBoardService.missingEnd(vo);
+		System.out.println("missingEnd");
+		return "redirect:missingBoard.jsp";
+	}
+
+	
 }

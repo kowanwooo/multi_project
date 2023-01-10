@@ -29,10 +29,11 @@
 				<div style="height: 35px;"></div>
 				<form action="modify" method="post" enctype="multipart/form-data">
 					<ul>
-						<li style="display: none;">*missingId : <input type="text" name="missingId"
-							value="${one.missingId}"></li>
+						<li style="display: none;">*missingId : <input type="text"
+							name="missingId" value="${one.missingId}"></li>
 						<li>*등록인 : <input type="text" name="userId"
-							value="${one.userId}" placeholder="내용을 입력하세요." required readonly="readonly"></li>
+							value="${one.userId}" placeholder="내용을 입력하세요." required
+							readonly="readonly"></li>
 						<li>*글 제목 : <input type="text" name="title"
 							value="${one.title}" placeholder="내용을 입력하세요." required></li>
 						<li>*잃어버린 장소 : <select class="insert_select" name="location"><option
@@ -56,10 +57,8 @@
 						<li>*상세설명 :</li>
 						<li><textarea id="story" name="description" rows="6"
 								cols="80" required>${one.description}</textarea></li>
-						<li>*사례금 : <input type="radio" name="gratuity1" required>있음<input
-							type="text" name="gratuity" value="${one.gratuity}"
-							placeholder="내용을 입력하세요."> <input type="radio"
-							name="gratuity1" value="0">없음
+						<li>*사례금 : <input type="text" name="gratuity"
+							value="${one.gratuity}" placeholder="내용을 입력하세요." required>원
 						</li>
 						<li class="multi_file">*사진첨부 : <input type="file" name="file"
 							id="file" onClick='fn_addFile()'></li>

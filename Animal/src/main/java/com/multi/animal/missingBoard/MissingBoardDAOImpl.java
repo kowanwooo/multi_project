@@ -53,4 +53,8 @@ public class MissingBoardDAOImpl implements MissingBoardDAOInterface {
 		my.update("missingBoard.modify", vo);
 	}
 
+	public void missingEnd(MissingBoardVO vo) {
+		my.update("missingBoard.missingEnd", vo);
+	}
+
 }

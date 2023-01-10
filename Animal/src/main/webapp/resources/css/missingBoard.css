@@ -56,6 +56,7 @@
 	padding: 10px;
 	margin: 0 13px;
 	float: left;
+	position: relative;
 }
 
 .pagenation {
@@ -110,4 +111,12 @@
 
 .missing_infoList:first-child {
 	font-weight: bolder;
+}
+
+.missingEnd_img {
+	width: 100px;
+	border-radius: 100%;
+	position: absolute;
+	right: 31px;
+	top: 20px;
 }

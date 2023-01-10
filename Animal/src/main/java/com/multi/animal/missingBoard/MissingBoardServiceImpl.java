@@ -47,4 +47,8 @@ public class MissingBoardServiceImpl implements MissingBoardServiceInterface {
 		dao.modify(vo);
 	}
 
+	public void missingEnd(MissingBoardVO vo) {
+		dao.missingEnd(vo);
+	}
+
 }

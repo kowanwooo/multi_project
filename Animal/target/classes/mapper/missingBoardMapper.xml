@@ -63,6 +63,12 @@
 		where
 		missingId = #{missingId}
 	</update>
+	
+	<update id="missingEnd" parameterType="missingBoardVO">
+		update missingboard set rule = 1
+		where
+		missingId = #{missingId}
+	</update>
 </mapper>
 
 

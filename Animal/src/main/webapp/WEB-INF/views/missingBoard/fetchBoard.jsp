@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:forEach items="${list}" var="vo" varStatus="status">
 	<div class="list_border">
+		<c:if test="${vo.rule eq 1}">
+			<img class="missingEnd_img" alt="end" src="../resources/img/실종종료.png">
+		</c:if>
 		<div class="img_wrap">
 			<img class="missing_img" alt="pet" src="../resources/upload/${vo.img}">
 		</div>

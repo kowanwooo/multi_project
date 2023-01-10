@@ -23,4 +23,6 @@ public interface MissingBoardDAOInterface {
 	public void delete(MissingBoardVO vo);
 	
 	public void modify(MissingBoardVO vo);
+	
+	public void missingEnd(MissingBoardVO vo);
 }

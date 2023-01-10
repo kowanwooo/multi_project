@@ -21,4 +21,6 @@ public interface MissingBoardServiceInterface {
 	void delete(MissingBoardVO vo);
 	
 	void modify(MissingBoardVO vo);
+	
+	void missingEnd(MissingBoardVO vo);
 }

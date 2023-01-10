@@ -14,6 +14,7 @@
 	border: 1px solid;
 	width: 400px;
 	height: 500px;
+	position: relative;
 }
 
 .detail_img {
@@ -93,4 +94,12 @@
 
 .detail_list>ul {
 	margin-bottom: 75px;
+}
+
+.missingDetailEnd_img {
+	width: 111px;
+	border-radius: 100%;
+	position: absolute;
+	right: 15px;
+	top: 13px;
 }

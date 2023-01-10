@@ -10,14 +10,14 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script>
-	var cnt = 1;
+	/* var cnt = 1;
 	function fn_addFile() {
 		if (cnt < 3) {
 			$(".multi_file").append(
 					"<br>" + "<input type='file' name='file" + cnt + "' onClick='fn_addFile()' />");
 			cnt++;
 		}
-	}
+	} */
 </script>
 </head>
 <body>
@@ -54,11 +54,11 @@
 						<li>*상세설명 :</li>
 						<li><textarea id="story" name="description" rows="6"
 								cols="80" required></textarea></li>
-						<li>*사례금 : <input type="radio" name="gratuity1" required>있음<input
-							type="text" name="gratuity" placeholder="내용을 입력하세요."> <input
-							type="radio" name="gratuity1" value="0">없음
+						<li>*사례금 : <input type="text" name="gratuity"
+							placeholder="내용을 입력하세요." required>원
 						</li>
-						<li class="multi_file">*사진첨부 : <input type="file" name="file" id="file" onClick='fn_addFile()'></li>
+						<li class="multi_file">*사진첨부 : <input type="file" name="file"
+							id="file"></li>
 					</ul>
 					<button type="submit" class="insert_btn1">등록</button>
 				</form>
