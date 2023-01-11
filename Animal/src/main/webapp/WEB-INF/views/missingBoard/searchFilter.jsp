@@ -4,7 +4,7 @@
 <c:forEach items="${list}" var="vo" varStatus="status">
 	<div class="list_border">
 		<div class="img_wrap">
-			<img class="missing_img" alt="pet" src="../resources/img/${vo.img}">
+			<img class="missing_img" alt="pet" src="../resources/img/${vo.img1}">
 		</div>
 		<ul>
 			<li class="missing_infoList"><a href="boardDetail?missingId=${vo.missingId}">${vo.title}</a></li>

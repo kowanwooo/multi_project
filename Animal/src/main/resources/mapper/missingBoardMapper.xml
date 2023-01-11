@@ -26,7 +26,7 @@
 		insert into missingboard
 		values
 		(null, #{userId}, #{title}, #{location}, #{tel}, #{pet}, null,
-		#{description}, #{gratuity}, #{img}, #{rule}, #{missingDate})
+		#{description}, #{gratuity}, #{img1}, #{img2}, #{img3}, #{rule}, #{missingDate})
 	</insert>
 
 	<select id="filterList" resultType="missingBoardVO"
@@ -58,8 +58,8 @@
 		update missingboard set title
 		= #{title}, location = #{location}, tel = #{tel}, pet =
 		#{pet},
-		description = #{description}, gratuity = #{gratuity}, img =
-		#{img},missingDate = #{missingDate}
+		description = #{description}, gratuity = #{gratuity}, img1 =
+		#{img1}, img2 = #{img2}, img3 = #{img3},missingDate = #{missingDate}
 		where
 		missingId = #{missingId}
 	</update>

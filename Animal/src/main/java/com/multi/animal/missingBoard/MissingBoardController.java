@@ -1,13 +1,13 @@
 package com.multi.animal.missingBoard;
 
-import java.io.File;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.multi.animal.FilterVO;
 import com.multi.animal.PageVO;
 
@@ -16,6 +16,8 @@ public class MissingBoardController {
 
 	@Autowired
 	MissingBoardServiceImpl missingBoardService;
+
+	private static final String CURR_IMAGE_REPO_PATH = "C:\\Users\\user\\Documents\\workspace-sts-3.9.12.RELEASE\\Animal\\src\\main\\webapp\\resources\\upload";
 
 	@RequestMapping("missingBoard/fetchBoard")
 	public void list(PageVO vo, Model model) {
@@ -73,19 +75,19 @@ public class MissingBoardController {
 	}
 
 	@RequestMapping("missingBoard/create")
-	public String insert(MissingBoardVO vo, HttpServletRequest request,MultipartFile file) throws Exception {
-		System.out.println(vo);
-		String savedName = file.getOriginalFilename();
-		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
-		System.out.println("업로드 경로는 " + uploadPath);
+	public String insert(MissingBoardVO vo, MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+			throws Exception {
 
-		System.out.println(uploadPath + "/" + savedName);
-		File target = new File(uploadPath + "/" + savedName);
-		if (!target.isDirectory()) {
-			target.mkdir();
-		}
-		file.transferTo(target);
-		vo.setImg(savedName);
+		List<String> fileList = missingBoardService.fileProcess(multipartRequest, CURR_IMAGE_REPO_PATH);
+
+		vo.setImg1(fileList.get(0));
+		vo.setImg2(fileList.get(1));
+		vo.setImg3(fileList.get(2));
+
+		System.out.println(vo.getImg1());
+		System.out.println(vo.getImg2());
+		System.out.println(vo.getImg3());
+
 		missingBoardService.insert(vo);
 		System.out.println("BoardInsert");
 		return "redirect:missingBoard.jsp";
@@ -105,47 +107,43 @@ public class MissingBoardController {
 
 		System.out.println("filterList");
 	}
-	
+
 	@RequestMapping("missingBoard/delete")
-	public String delete(MissingBoardVO vo)  {
+	public String delete(MissingBoardVO vo) {
 		missingBoardService.delete(vo);
 		return "redirect:missingBoard.jsp";
 	}
-	
+
 	@RequestMapping("missingBoard/findOne")
-	public void findOne(MissingBoardVO vo, Model model)  {
+	public void findOne(MissingBoardVO vo, Model model) {
 		MissingBoardVO one = missingBoardService.one(vo);
 		model.addAttribute("one", one);
 		System.out.println("findOne");
 		System.out.println(one);
 	}
-	
-	@RequestMapping("missingBoard/modify")
-	public String modify(MissingBoardVO vo, HttpServletRequest request,MultipartFile file) throws Exception {
-		String savedName = file.getOriginalFilename();
-		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
-		System.out.println("업로드 경로는 " + uploadPath);
 
-		System.out.println(uploadPath + "/" + savedName);
-		File target = new File(uploadPath + "/" + savedName);
-		if (!target.isDirectory()) {
-			target.mkdir();
-		}
-		file.transferTo(target);
-		vo.setImg(savedName);
+	@RequestMapping("missingBoard/modify")
+	public String modify(MissingBoardVO vo, MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+			throws Exception {
+		
+		List<String> fileList = missingBoardService.fileProcess(multipartRequest, CURR_IMAGE_REPO_PATH);
+
+		vo.setImg1(fileList.get(0));
+		vo.setImg2(fileList.get(1));
+		vo.setImg3(fileList.get(2));
+
 		missingBoardService.modify(vo);
 		System.out.println("modify");
 		System.out.println(vo.getMissingId());
 		System.out.println("==================");
 		return "redirect:missingBoard.jsp";
 	}
-	
+
 	@RequestMapping("missingBoard/missingEnd")
-	public String missingEnd(MissingBoardVO vo, Model model)  {
+	public String missingEnd(MissingBoardVO vo, Model model) {
 		missingBoardService.missingEnd(vo);
 		System.out.println("missingEnd");
 		return "redirect:missingBoard.jsp";
 	}
 
-	
 }

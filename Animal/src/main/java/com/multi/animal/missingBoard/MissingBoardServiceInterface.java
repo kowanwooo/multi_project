@@ -2,6 +2,8 @@ package com.multi.animal.missingBoard;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.multi.animal.FilterVO;
 import com.multi.animal.PageVO;
 
@@ -23,4 +25,6 @@ public interface MissingBoardServiceInterface {
 	void modify(MissingBoardVO vo);
 	
 	void missingEnd(MissingBoardVO vo);
+	
+	List<String> fileProcess(MultipartHttpServletRequest multipartRequest, String CURR_IMAGE_REPO_PATH) throws Exception;
 }

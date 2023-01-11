@@ -10,19 +10,19 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script>
-	/* var cnt = 1;
+	var cnt = 1;
 	function fn_addFile() {
-		if (cnt < 3) {
-			$(".multi_file").append(
-					"<br>" + "<input type='file' name='file" + cnt + "' onClick='fn_addFile()' />");
+		if (cnt < 4) {
+			$("#d_file").append(
+					"<input type='file' name='file" + cnt + "' />" + "<br>");
 			cnt++;
 		}
-	} */
+	}
 </script>
 </head>
 <body>
 	<jsp:include page="../header/header.jsp"></jsp:include>
-	<div>
+	<div style="height: 818px;">
 		<div class="insert_container">
 			<h1 class="insert_title">실종 동물 등록</h1>
 			<div class="insert_info">
@@ -57,8 +57,10 @@
 						<li>*사례금 : <input type="text" name="gratuity"
 							placeholder="내용을 입력하세요." required>원
 						</li>
-						<li class="multi_file">*사진첨부 : <input type="file" name="file"
-							id="file"></li>
+						<li class="multi_file">*사진첨부 : <input type="button"
+							value="파일 추가" onClick="fn_addFile()"> (3개까지 가능) <br>
+
+							<div id="d_file"></div>
 					</ul>
 					<button type="submit" class="insert_btn1">등록</button>
 				</form>

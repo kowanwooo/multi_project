@@ -1,8 +1,13 @@
 package com.multi.animal.missingBoard;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.multi.animal.FilterVO;
 import com.multi.animal.PageVO;
@@ -50,5 +55,26 @@ public class MissingBoardServiceImpl implements MissingBoardServiceInterface {
 	public void missingEnd(MissingBoardVO vo) {
 		dao.missingEnd(vo);
 	}
+	
+	public List<String> fileProcess(MultipartHttpServletRequest multipartRequest, String CURR_IMAGE_REPO_PATH) throws Exception {
+		List<String> fileList = new ArrayList<String>();
+		Iterator<String> fileNames = multipartRequest.getFileNames();
 
+		while (fileNames.hasNext()) {
+			String fileName = fileNames.next();
+			MultipartFile mFile = multipartRequest.getFile(fileName);
+			String originalFileName = mFile.getOriginalFilename();
+			fileList.add(originalFileName);
+			File file = new File(CURR_IMAGE_REPO_PATH + "\\" + fileName);
+			if (mFile.getSize() != 0) {
+				if (!file.exists()) {
+					if (file.getParentFile().mkdir()) {
+						file.createNewFile();
+					}
+				}
+				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH + "\\" + originalFileName));
+			}
+		}
+		return fileList;
+	}
 }

@@ -7,7 +7,7 @@
 			<img class="missingEnd_img" alt="end" src="../resources/img/실종종료.png">
 		</c:if>
 		<div class="img_wrap">
-			<img class="missing_img" alt="pet" src="../resources/upload/${vo.img}">
+			<img class="missing_img" alt="pet" src="../resources/upload/${vo.img1}">
 		</div>
 		<ul>
 			<li class="missing_infoList"><a href="boardDetail?missingId=${vo.missingId}">${vo.title}</a></li>
