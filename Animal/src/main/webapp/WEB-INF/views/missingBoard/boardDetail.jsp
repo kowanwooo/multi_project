@@ -96,7 +96,10 @@
 				<div class="detail_list2">
 					<ul>
 						<li>글제목 : ${one.title}</li>
-						<li>상세설명 : ${one.description}</li>
+						<li style="position: relative;">상세설명 : <textarea
+								style="position: absolute; top: 53px; left: 1px;" rows="17"
+								cols="41" readonly="readonly">${one.description}</textarea>
+						</li>
 					</ul>
 				</div>
 			</div>

@@ -72,7 +72,7 @@
 
 .detail_subImg {
 	width: 150px;
-	height: 150px;
+	height: 196px;
 	border: 1px solid;
 	float: left;
 }
@@ -93,7 +93,7 @@
 }
 
 .detail_list>ul {
-	margin-bottom: 75px;
+	margin-bottom: 48px;
 }
 
 .missingDetailEnd_img {
