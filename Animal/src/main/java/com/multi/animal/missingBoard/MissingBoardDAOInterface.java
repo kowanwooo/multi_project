@@ -25,4 +25,8 @@ public interface MissingBoardDAOInterface {
 	public void modify(MissingBoardVO vo);
 	
 	public void missingEnd(MissingBoardVO vo);
+	
+	public List<MissingBoardVO> listNavi(PageVO vo);
+	
+	public int countNavi(PageVO vo);
 }

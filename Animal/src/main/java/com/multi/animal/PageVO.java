@@ -4,6 +4,7 @@ public class PageVO {
 	private int start;
 	private int end;
 	private int page;
+	private String location;
 
 	public void setStartEnd(int page) {
 		start = 1 + (page - 1) * 4;
@@ -32,6 +33,14 @@ public class PageVO {
 
 	public void setEnd(int end) {
 		this.end = end;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	@Override

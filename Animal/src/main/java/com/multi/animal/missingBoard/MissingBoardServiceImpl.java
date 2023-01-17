@@ -77,4 +77,12 @@ public class MissingBoardServiceImpl implements MissingBoardServiceInterface {
 		}
 		return fileList;
 	}
+
+	public List<MissingBoardVO> listNavi(PageVO vo) {
+		return dao.listNavi(vo);
+	}
+
+	public int countNavi(PageVO vo) {
+		return dao.countNavi(vo);
+	}
 }

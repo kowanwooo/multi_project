@@ -24,7 +24,6 @@ public class MissingBoardController {
 		if (vo.getPage() == 0) {
 			vo.setPage(1);
 		}
-		System.out.println(vo.getPage());
 		vo.setStartEnd(vo.getPage());
 		List<MissingBoardVO> list = missingBoardService.list(vo);
 
@@ -33,9 +32,41 @@ public class MissingBoardController {
 		System.out.println("list");
 	}
 
+	@RequestMapping("missingBoard/fetchBoardNavi")
+	public void listNavi(PageVO vo, Model model) {
+		if (vo.getPage() == 0) {
+			vo.setPage(1);
+		}
+		System.out.println(vo.getLocation());
+		vo.setStartEnd(vo.getPage());
+		System.out.println(vo.getStart());
+		System.out.println(vo.getEnd());
+		List<MissingBoardVO> listNavi = missingBoardService.listNavi(vo);
+		System.out.println("**********" + listNavi);
+		model.addAttribute("list", listNavi);
+
+		System.out.println("listNAVI");
+	}
+	
 	@RequestMapping("missingBoard/pageCount")
 	public void pageCount(PageVO vo, Model model) {
 		int count = missingBoardService.count();
+		System.out.println("all count>> " + count);
+		System.out.println(vo);
+		int pages = 0;
+		if (count % 4 == 0) {
+			pages = count / 4;
+		} else {
+			pages = count / 4 + 1;
+		}
+		model.addAttribute("count", count);
+		model.addAttribute("pages", pages);
+		System.out.println("pageCount");
+	}
+	
+	@RequestMapping("missingBoard/pageCountNavi")
+	public void pageCountNavi(PageVO vo, Model model) {
+		int count = missingBoardService.countNavi(vo);
 		System.out.println("all count>> " + count);
 		System.out.println(vo);
 		int pages = 0;

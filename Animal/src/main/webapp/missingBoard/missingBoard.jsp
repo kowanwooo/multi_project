@@ -13,8 +13,14 @@
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script type="text/javascript">
 	$(function() {
+		<%
+		 session.removeAttribute("userId");
+		 session.setAttribute("userId", "dev"); 
+		%>
+		
 		 if (navigator.geolocation) {
 	            //위치 정보를 얻기
+	            console.log(navigator.geolocation)
 	            navigator.geolocation.getCurrentPosition (function(pos) {
 	                const lat = pos.coords.latitude;
 	               	const lon = pos.coords.longitude;
@@ -24,7 +30,27 @@
 	                	url : "https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x="+lon+"&y="+lat,
 	                	headers: {'Authorization': 'KakaoAK 030da645dc01fee6a2c300a858d2b094'},
 						success : function(data) {
-							console.log(data.documents[0].region_1depth_name);   
+							console.log(data.documents[0].region_1depth_name.substr(0, 2));  
+							$("#choice_location").val(data.documents[0].region_1depth_name.substr(0, 2)).prop("selected", true);
+							$.ajax({
+								url : "fetchBoardNavi",
+								data : {
+									location : data.documents[0].region_1depth_name.substr(0, 2),
+								},
+								success : function(table) {
+									$("#result").html(table)  
+									
+								}
+							})
+							$.ajax({
+								url : "pageCountNavi",
+								data : {
+									location : data.documents[0].region_1depth_name.substr(0, 2),
+								},
+								success : function(table) {
+									$("#result2").html(table)
+								}
+							})
 						}
 	                			
 	                })
@@ -32,6 +58,7 @@
 	        } else {
 	            alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
 	        }
+		 
 		$.ajax({
 			url : "fetchBoard",
 			success : function(table) {
@@ -80,16 +107,16 @@
 				<option value="dog" selected>강아지</option>
 				<option value="cat">고양이</option>
 				<option value="another">기타 반려동물</option>
-			</select> <select name="choice_location">
-				<option value="seoul" selected>서울</option>
-				<option value="busan">부산</option>
-				<option value="daegu">대구</option>
-				<option value="incheon">인천</option>
-				<option value="gwangju">광주</option>
-				<option value="daejeon">대전</option>
-				<option value="ulsan">울산</option>
-				<option value="ganwondo">강원도</option>
-				<option value="jeju">제주도</option>
+			</select> <select id="choice_location" name="choice_location">
+				<option value="서울" selected>서울</option>
+				<option value="부산">부산</option>
+				<option value="대구">대구</option>
+				<option value="인천">인천</option>
+				<option value="광주">광주</option>
+				<option value="대전">대전</option>
+				<option value="울산">울산</option>
+				<option value="강원">강원</option>
+				<option value="제주">제주</option>
 			</select>
 			<button class="searh_btn">검색</button>
 			<button class="create_btn"

@@ -8,23 +8,27 @@ import com.multi.animal.FilterVO;
 import com.multi.animal.PageVO;
 
 public interface MissingBoardServiceInterface {
-	List<MissingBoardVO> list(PageVO vo);
+	public List<MissingBoardVO> list(PageVO vo);
 
-	int count();
+	public List<MissingBoardVO> listNavi(PageVO vo);
 	
-	MissingBoardVO one(MissingBoardVO vo);
+	public int count();
 	
-	void insert(MissingBoardVO vo);
+	public int countNavi(PageVO vo);
 	
-	List<MissingBoardVO> filterList(FilterVO vo);
+	public MissingBoardVO one(MissingBoardVO vo);
 	
-	int filterCount(FilterVO vo);
+	public void insert(MissingBoardVO vo);
 	
-	void delete(MissingBoardVO vo);
+	public List<MissingBoardVO> filterList(FilterVO vo);
 	
-	void modify(MissingBoardVO vo);
+	public int filterCount(FilterVO vo);
 	
-	void missingEnd(MissingBoardVO vo);
+	public void delete(MissingBoardVO vo);
 	
-	List<String> fileProcess(MultipartHttpServletRequest multipartRequest, String CURR_IMAGE_REPO_PATH) throws Exception;
+	public void modify(MissingBoardVO vo);
+	
+	public void missingEnd(MissingBoardVO vo);
+	
+	public List<String> fileProcess(MultipartHttpServletRequest multipartRequest, String CURR_IMAGE_REPO_PATH) throws Exception;
 }

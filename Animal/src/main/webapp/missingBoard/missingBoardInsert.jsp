@@ -29,8 +29,8 @@
 				<div style="height: 35px;"></div>
 				<form action="create" method="post" enctype="multipart/form-data">
 					<ul>
-						<li>*등록인 : <input type="text" name="userId"
-							placeholder="내용을 입력하세요." required></li>
+						<li>*등록인 : <input type="text" name="userId" value="<%=session.getAttribute("userId") %>"
+							placeholder="내용을 입력하세요." readonly="readonly"></li>
 						<li>*글 제목 : <input type="text" name="title"
 							placeholder="내용을 입력하세요." required></li>
 						<li>*잃어버린 장소 : <select class="insert_select" name="location"><option

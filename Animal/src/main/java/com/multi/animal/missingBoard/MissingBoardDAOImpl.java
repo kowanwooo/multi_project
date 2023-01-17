@@ -57,4 +57,12 @@ public class MissingBoardDAOImpl implements MissingBoardDAOInterface {
 		my.update("missingBoard.missingEnd", vo);
 	}
 
+	public List<MissingBoardVO> listNavi(PageVO vo) {
+		return my.selectList("missingBoard.listNavi", vo);
+	}
+
+	public int countNavi(PageVO vo) {
+		return my.selectOne("missingBoard.countNavi", vo);
+	}
+
 }

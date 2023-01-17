@@ -41,8 +41,10 @@
 	<div class="detail_container">
 		<div class="detail_header">
 			<h1 class="detail_title">우리아이를 찾습니다!!</h1>
+		<c:if test="${one.userId eq sessionScope.userId}">
 			<button class="end_btn"
 				onclick="location.href='missingEnd?missingId=${one.missingId}'">실종종료</button>
+		</c:if>				
 		</div>
 		<div class="detail_imgWrap">
 			<div class="detail_mainImg">
@@ -56,12 +58,14 @@
 		</div>
 		<div class="detail_infoWrap">
 			<div class="detail_info">
+			<c:if test="${one.userId eq sessionScope.userId}">
 				<div class="detail_btn">
 					<button class="modify_btn"
 						onclick="location.href='findOne?missingId=${one.missingId}'">수정하기</button>
 					<button class="delete_btn"
 						onclick="location.href='delete?missingId=${one.missingId}'">삭제하기</button>
 				</div>
+			</c:if>	
 				<div class="detail_list">
 					<ul>
 						<li>보호자 연락처 : ${one.tel}</li>
